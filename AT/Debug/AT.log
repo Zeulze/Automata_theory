@@ -1,0 +1,6 @@
+﻿  AT.cpp
+C:\Users\Zeulze\Desktop\AT\AT\AT.cpp(81,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Zeulze\Desktop\AT\AT\AT.cpp(97,14): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Zeulze\Desktop\AT\AT\AT.cpp(185,17): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Zeulze\Desktop\AT\AT\AT.cpp(465,20): warning C4018: <: несоответствие типов со знаком и без знака
+  AT.vcxproj -> C:\Users\Zeulze\Desktop\AT\Debug\AT.exe

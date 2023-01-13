@@ -1,0 +1,12 @@
+﻿  AT.cpp
+C:\Users\Zeulze\Desktop\AT\AT\AT.cpp(930,43): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+C:\Users\Zeulze\Desktop\AT\AT\AT.cpp(942,45): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+C:\Users\Zeulze\Desktop\AT\AT\AT.cpp(1135,50): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+C:\Users\Zeulze\Desktop\AT\AT\AT.cpp(1149,38): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+C:\Users\Zeulze\Desktop\AT\AT\AT.cpp(1164,20): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\Zeulze\Desktop\AT\AT\AT.cpp(1175,49): warning C4244: аргумент: преобразование "double" в "const unsigned __int64", возможна потеря данных
+C:\Users\Zeulze\Desktop\AT\AT\AT.cpp(1251,62): warning C4244: аргумент: преобразование "double" в "const unsigned __int64", возможна потеря данных
+C:\Users\Zeulze\Desktop\AT\AT\AT.cpp(1254,50): warning C4244: аргумент: преобразование "double" в "const unsigned __int64", возможна потеря данных
+C:\Users\Zeulze\Desktop\AT\AT\AT.cpp(1316,62): warning C4244: аргумент: преобразование "double" в "const unsigned __int64", возможна потеря данных
+C:\Users\Zeulze\Desktop\AT\AT\AT.cpp(1319,50): warning C4244: аргумент: преобразование "double" в "const unsigned __int64", возможна потеря данных
+  AT.vcxproj -> C:\Users\Zeulze\Desktop\AT\x64\Debug\AT.exe

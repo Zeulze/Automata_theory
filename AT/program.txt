@@ -1,0 +1,18 @@
+{ 
+      float a, b; int i, j;
+      floatArr arr[5];
+
+      a = 0;
+      b = 0;
+      arr[0] = 1;
+      if arr[0] < a then begin 
+         arr[0] = arr[0] + 1;
+      end
+      else begin
+         arr[0] = arr[0] - 100;
+      end
+      a = arr[0];
+      print(a);
+      
+}
+
