@@ -412,17 +412,16 @@ public:
 				programOPS.push_back(Stack[pos]);
 			}
 			if (Stack[pos].Name == "r") {
-				if (programOPS[pos + 1].Name != "mass") {
-					programOPS.push_back(Stack[pos + 1]);
+				pos++;
+				if (Stack[pos].Name == "name") {
 					programOPS.push_back(Stack[pos]);
-					pos += 1;
 				}
 				else {
-					programOPS.push_back(Stack[pos + 1]);
-					programOPS.push_back(Stack[pos + 2]);
 					programOPS.push_back(Stack[pos]);
-					pos += 2;
+					pos++;
+					programOPS.push_back(Stack[pos]);
 				}
+				createJump("r");
 				
 			}
 			if (Stack[pos].Name == "w") {
@@ -1218,16 +1217,29 @@ public:
 				}
 		}
 		if (program[pos].Name == "w") {
-			cout << findNumber(stack.top()).ValueNumber << endl;
-			stack.pop();
+			if (stack.top().Name != "") {
+				cout << findNumber(stack.top()).ValueNumber << endl;
+				stack.pop();
+			}
+			else {
+				cout << stack.top().ValueNumber << endl;
+				stack.pop();
+			}
+			
 		}
 		if (program[pos].Name == "r") {
 			double value;
 			cout << "Enter the value ";
 			cin >> value;
-			stack.top().ValueNumber = value;
-			setNumber(stack.top());
-			stack.pop();
+			if (stack.top().Name != "") {
+				stack.top().ValueNumber = value;
+				setNumber(stack.top());
+				stack.pop();
+			}
+			else {
+
+				cout << "test ";
+			}
 		}
 	}
 	void whileExecution() {

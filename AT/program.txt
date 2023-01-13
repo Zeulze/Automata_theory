@@ -2,6 +2,8 @@
       float a, b; int i, j;
       floatArr arr[5];
 
+      i = 0;
+      read(i);
       a = 0;
       b = 0;
       arr[0] = 1;
@@ -12,7 +14,8 @@
          arr[0] = arr[0] - 100;
       end
       a = arr[0];
-      print(a);
+      print(arr[0] + 2);;
+      
       
 }
 
