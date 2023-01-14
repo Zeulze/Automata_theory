@@ -19,7 +19,7 @@ const string names[35] = {
 		"if", "then", "while", "read",
 		"print", "int", "float", "else",
 		"intArr", "floatArr", "intDoubleArr",
-		"floatDoubleArr", "{", "}" 
+		"floatDoubleArr", "{", "}"
 };
 
 class LexemsAlphabet {
@@ -51,7 +51,7 @@ class SingleLexem {
 public:
 	string Name = "";
 	string ValueSymbol = "";
-	
+
 	vector<SingleLexem> vectorLex;
 
 	vector<SingleLexem> parent;
@@ -386,7 +386,7 @@ public:
 	int pos = 0;
 
 	void generationOPS() {
-		
+
 		while (pos < Stack.size()) {
 			if (Stack[pos].Name == "m0") {
 				markZeroHandler();
@@ -422,7 +422,7 @@ public:
 					programOPS.push_back(Stack[pos]);
 				}
 				createJump("r");
-				
+
 			}
 			if (Stack[pos].Name == "w") {
 				SingleLexem w = Stack[pos];
@@ -462,16 +462,16 @@ public:
 			pos++;
 		}
 	}
-	
+
 };
 
 class Parser {
 private:
 	vector<SingleLexem> Token;
-	
+
 	int pos = 0;
 	bool trigger = false;
-	
+
 
 	void P() {
 		if (Token[pos].Name != "{") {
@@ -493,7 +493,7 @@ private:
 			pos++;
 			H();
 			if (Token[pos].Name != "=") {
-				
+
 				enterError(Token[pos].X, Token[pos].Y);
 			}
 			pos++;
@@ -786,7 +786,7 @@ private:
 	}
 
 	void U() {
-		if (Token[pos].Name == "+") {	
+		if (Token[pos].Name == "+") {
 			Token[pos].ValueNumber = 1;
 			prog.Stack.push_back(Token[pos]);
 			pos++;
@@ -948,7 +948,7 @@ private:
 			}
 		}
 	}
-	
+
 	void addVariable() {
 		checkArrName();
 		if (prog.nameFlag == "int") prog.intNames.push_back(Token[pos]);
@@ -1015,7 +1015,7 @@ public:
 	Interpretator(vector<SingleLexem> program, Ops ops) {
 		this->program = program;
 		this->ops = ops;
-		
+
 	}
 
 	SingleLexem findNumber(SingleLexem number) {
@@ -1046,15 +1046,15 @@ public:
 	}
 	void setNumber(SingleLexem number) {
 		for (int i = 0; i < ops.intNames.size(); i++) {
-			if (number.ValueSymbol == ops.intNames[i].ValueSymbol) 
-			{ 
+			if (number.ValueSymbol == ops.intNames[i].ValueSymbol)
+			{
 				ops.intNames[i].ValueNumber = number.ValueNumber;
-				return; 
+				return;
 			}
 		}
 
 		for (int i = 0; i < ops.floatArrNames.size(); i++) {
-			if (number.ValueSymbol == ops.floatArrNames[i].ValueSymbol) 
+			if (number.ValueSymbol == ops.floatArrNames[i].ValueSymbol)
 			{
 				ops.floatArrNames[i].ValueNumber = number.ValueNumber;
 				return;
@@ -1062,7 +1062,7 @@ public:
 		}
 
 		for (int i = 0; i < ops.floatNames.size(); i++) {
-			if (number.ValueSymbol == ops.floatNames[i].ValueSymbol) 
+			if (number.ValueSymbol == ops.floatNames[i].ValueSymbol)
 			{
 				ops.floatNames[i].ValueNumber = number.ValueNumber;
 				return;
@@ -1070,7 +1070,7 @@ public:
 		}
 
 		for (int i = 0; i < ops.intArrNames.size(); i++) {
-			if (number.ValueSymbol == ops.intArrNames[i].ValueSymbol) 
+			if (number.ValueSymbol == ops.intArrNames[i].ValueSymbol)
 			{
 				ops.intArrNames[i].ValueNumber = number.ValueNumber;
 				return;
@@ -1132,8 +1132,8 @@ public:
 			if (program[pos].Name == "name") {
 				if (findNumber(program[pos]).ValueNumber < stack.top().size) {
 					stack.top().index = findNumber(program[pos]).ValueNumber;
-					
-					
+
+
 				}
 				else {
 					cout << program[pos].ValueNumber << " " << stack.top().size;
@@ -1146,14 +1146,14 @@ public:
 			{
 				if (program[pos].ValueNumber < stack.top().size) {
 					stack.top().index = program[pos].ValueNumber;
-					
+
 				}
 				else {
 					cout << program[pos].ValueNumber << " " << stack.top().size;
 					cout << "Out of index of array: " << stack.top().Name;
 					exit(1);
 				}
-			}	
+			}
 		}
 		if (program[pos].Name == "mass" && !program[pos].Mark) {
 			SingleLexem helperLex = findNumber(program[pos]);
@@ -1179,7 +1179,7 @@ public:
 					exit(1);
 				}
 			}
-			
+
 		}
 		if (program[pos].Name == "/") {
 			second = stack.top();
@@ -1201,20 +1201,20 @@ public:
 			stack.pop();
 			stack.top().ValueNumber -= second.ValueNumber;
 		}
-		if (program[pos].Name == "=") {				
-				second = stack.top();
+		if (program[pos].Name == "=") {
+			second = stack.top();
+			stack.pop();
+			if (stack.top().index == -1) {
+				stack.top().ValueNumber = second.ValueNumber;
+				setNumber(stack.top());
 				stack.pop();
-				if (stack.top().index == -1) {
-					stack.top().ValueNumber = second.ValueNumber;
-					setNumber(stack.top());
-					stack.pop();
-				}
-				else {
+			}
+			else {
 
-					stack.top().vectorLex[stack.top().index].ValueNumber = second.ValueNumber;
-					setArray(stack.top());
-					stack.pop();
-				}
+				stack.top().vectorLex[stack.top().index].ValueNumber = second.ValueNumber;
+				setArray(stack.top());
+				stack.pop();
+			}
 		}
 		if (program[pos].Name == "w") {
 			if (stack.top().Name != "") {
@@ -1225,7 +1225,7 @@ public:
 				cout << stack.top().ValueNumber << endl;
 				stack.pop();
 			}
-			
+
 		}
 		if (program[pos].Name == "r") {
 			double value;
