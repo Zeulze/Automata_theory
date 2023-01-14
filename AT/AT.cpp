@@ -553,10 +553,11 @@ private:
 				enterError(Token[pos].X, Token[pos].Y);
 			}
 			pos++;
-			
-				
-			
-		
+			if (Token[pos].Name != ";") {
+				enterError(Token[pos].X, Token[pos].Y);
+			}
+			prog.Stack.push_back(Token[pos]);
+			pos++;
 			return;
 		}
 		if (Token[pos].Name == "int") {
